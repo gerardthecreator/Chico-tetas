@@ -1,0 +1,207 @@
+/**
+ * =================================================================
+ *                      DISEÑOS.CSS (Versión Mejorada)
+ * -----------------------------------------------------------------
+ * Este archivo eleva la estética de la página con animaciones
+ * refinadas, micro-interacciones satisfactorias y detalles
+ * visuales que crean una experiencia de usuario premium.
+ * =================================================================
+ */
+
+:root {
+    /* Easing personalizado para animaciones con un ligero "rebote" */
+    --easing-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* ============================================ */
+/*          PULIDO GENERAL DE LA UI             */
+/* ============================================ */
+
+/* Estilo de la barra de desplazamiento para navegadores WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--primary-bg);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-dark-blue);
+    border-radius: 10px;
+    border: 2px solid var(--primary-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent-color);
+}
+
+/* Estilo de la barra de desplazamiento para Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-dark-blue) var(--primary-bg);
+}
+
+/* Color de resaltado al seleccionar texto */
+::selection {
+    background-color: var(--accent-color);
+    color: var(--primary-white);
+}
+
+
+/* ============================================ */
+/*      ANIMACIONES DE ENTRADA (ON SCROLL)      */
+/* ============================================ */
+
+/* Estado inicial de los elementos a animar */
+.neu-container,
+.neu-card,
+.about-photo,
+.about-text,
+.section-title {
+    opacity: 0;
+    transform: translateY(50px) scale(0.98);
+    transition: opacity 0.8s var(--easing-bounce), transform 0.8s var(--easing-bounce);
+}
+
+/* Estado final cuando el elemento es visible (clase añadida por JS) */
+.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Animación escalonada para las tarjetas de servicios */
+.services-grid .neu-card:nth-child(2) { transition-delay: 0.1s; }
+.services-grid .neu-card:nth-child(3) { transition-delay: 0.2s; }
+.services-grid .neu-card:nth-child(4) { transition-delay: 0.05s; } /* Variación para un ritmo menos monótono */
+.services-grid .neu-card:nth-child(5) { transition-delay: 0.15s; }
+.services-grid .neu-card:nth-child(6) { transition-delay: 0.25s; }
+
+
+/* ============================================ */
+/*    MICRO-INTERACCIONES Y HOVERS AVANZADOS    */
+/* ============================================ */
+
+/* Efecto de "levantar" la tarjeta al pasar el mouse, ahora más sofisticado */
+.neu-card:hover {
+    transform: translateY(-12px);
+    /* Se añade un borde interior con box-shadow para no afectar el layout */
+    box-shadow: var(--neu-shadow), inset 0 0 0 2px var(--accent-color);
+}
+
+/* Botón principal de la sección Hero con animación de pulso */
+.hero-section .cta-button-large {
+    animation: pulse 2.5s infinite;
+}
+
+.hero-section .cta-button-large:hover {
+    animation-play-state: paused; /* Pausamos la animación al pasar el mouse */
+    transform: scale(1.05);
+    background: linear-gradient(135deg, var(--accent-color), #00c4ff);
+    color: var(--primary-white);
+    box-shadow: -6px -6px 12px var(--shadow-light), 6px 6px 12px var(--shadow-dark), 0 0 25px rgba(0, 168, 204, 0.7);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: var(--neu-shadow), 0 0 0 0 rgba(0, 168, 204, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: var(--neu-shadow), 0 0 0 15px rgba(0, 168, 204, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: var(--neu-shadow), 0 0 0 0 rgba(0, 168, 204, 0);
+    }
+}
+
+/* Animación mejorada en los iconos de las tarjetas de servicio */
+.neu-card .card-icon {
+    transition: transform 0.5s var(--easing-bounce);
+}
+.neu-card:hover .card-icon {
+    transform: scale(1.1) rotate(-10deg);
+}
+
+
+/* ============================================ */
+/*      MEJORAS VISUALES EN COMPONENTES         */
+/* ============================================ */
+
+/* Animación para la línea debajo del título de sección */
+.section-title::after {
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.8s var(--easing-bounce);
+    transition-delay: 0.3s;
+}
+
+.visible .section-title::after {
+    transform: scaleX(1);
+}
+
+/* Efecto de foco más pronunciado en los campos del formulario */
+.neu-input, textarea {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.neu-input:focus, textarea:focus {
+    background-color: #f0f3f8; /* Un color ligeramente diferente para indicar foco */
+    box-shadow: var(--neu-inset-shadow), 0 0 0 3px rgba(0, 168, 204, 0.4);
+}
+
+/* Transición suave para el texto del placeholder */
+::placeholder {
+    transition: opacity 0.3s ease;
+}
+:focus::placeholder {
+    opacity: 0.5;
+}
+
+/* Suavizar la transición del acordeón */
+.accordion-header i {
+    transition: transform 0.5s var(--easing-bounce);
+}
+
+
+/* ============================================ */
+/*              ELEMENTOS DECORATIVOS           */
+/* ============================================ */
+
+.decorative-blob {
+    position: absolute;
+    z-index: -1;
+    opacity: 0.6;
+    filter: blur(60px);
+    pointer-events: none;
+}
+
+.blob1 {
+    width: 450px;
+    height: 450px;
+    background: rgba(0, 168, 204, 0.15);
+    top: 5%;
+    left: -15%;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: morph 18s infinite alternate;
+}
+
+.blob2 {
+    width: 350px;
+    height: 350px;
+    background: rgba(30, 42, 71, 0.1);
+    bottom: 0%;
+    right: -10%;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    animation: morph2 22s infinite alternate-reverse;
+}
+
+@keyframes morph {
+    0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(90deg) scale(1.1); }
+    100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: rotate(180deg) scale(0.9); }
+}
+
+@keyframes morph2 {
+    0% { border-radius: 40% 60% 60% 40% / 70% 50% 50% 30%; transform: translateY(0px); }
+    100% { border-radius: 70% 30% 40% 60% / 60% 70% 30% 40%; transform: translateY(-40px); }
+}

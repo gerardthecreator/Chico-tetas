@@ -1,0 +1,173 @@
+/* ============================================ */
+/*      ESTILOS PARA DISPOSITIVOS MÓVILES       */
+/*      (Ancho de pantalla <= 540px)            */
+/* ============================================ */
+
+@media (max-width: 540px) {
+
+    /* ============================================ */
+    /*          AJUSTES GLOBALES Y TIPOGRAFÍA       */
+    /* ============================================ */
+
+    body {
+        /* Mejora el renderizado del texto en móviles */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1 { font-size: 2.5rem; } /* Reducimos el tamaño del título principal */
+    h2 { font-size: 2rem; }   /* Reducimos el tamaño de los títulos de sección */
+    h3 { font-size: 1.3rem; }
+
+    .section-padding {
+        padding: 60px 0; /* Menos espaciado vertical en secciones */
+    }
+
+    .container {
+        padding: 0 15px; /* Menos espaciado lateral en el contenedor principal */
+    }
+
+    /* ============================================ */
+    /*                      HEADER Y NAVEGACIÓN     */
+    /* ============================================ */
+
+    .main-header .container {
+        position: relative;
+    }
+
+    /* Ocultamos la navegación de escritorio y el botón de CTA */
+    .main-nav {
+        display: none; /* Oculto por defecto */
+    }
+
+    .main-header .cta-button {
+        display: none;
+    }
+
+    /* Estilos para el menú de hamburguesa (debes agregarlo al HTML) */
+    .hamburger-menu {
+        display: block; /* Asegúrate de que sea visible */
+        font-size: 1.8rem;
+        color: var(--primary-dark-blue);
+        cursor: pointer;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    /* Estilos para el menú desplegable cuando está activo */
+    /* (Controlado por JS al añadir una clase al body o header) */
+    .nav-active .main-nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--primary-dark-blue);
+        z-index: 999;
+        transform: translateX(0%);
+        transition: transform 0.4s ease-in-out;
+    }
+    
+    .nav-active .main-nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .nav-active .main-nav a {
+        color: var(--primary-white);
+        font-size: 1.8rem;
+    }
+
+    /* ============================================ */
+    /*                  SECCIÓN HERO                */
+    /* ============================================ */
+
+    .hero-section {
+        min-height: 70vh; /* Altura ligeramente menor para ver más contenido */
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    /* ============================================ */
+    /*                  SOBRE MÍ                    */
+    /* ============================================ */
+
+    .about-content {
+        /* Convertimos el grid de 2 columnas a 1 sola */
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .about-photo {
+        /* Centramos la foto */
+        margin: 0 auto 30px auto;
+    }
+
+    /* ============================================ */
+    /*                  SERVICIOS                   */
+    /* ============================================ */
+
+    .services-grid {
+        /* El grid ya es responsive, pero ajustamos el gap */
+        gap: 20px;
+    }
+
+    /* ============================================ */
+    /*                  FORMULARIO DE CITA          */
+    /* ============================================ */
+
+    .neu-container {
+        padding: 20px; /* Menos padding en los contenedores principales */
+    }
+
+    .form-grid {
+        /* Convertimos el grid de 2 columnas a 1 sola */
+        grid-template-columns: 1fr;
+    }
+
+    .form-step legend {
+        font-size: 1.2rem;
+    }
+
+    .checkbox-group label {
+        font-size: 0.9rem; /* Texto más pequeño para que quepa bien */
+    }
+
+    /* ============================================ */
+    /*                  ACORDEÓN (FAQ, PREP)        */
+    /* ============================================ */
+
+    .accordion-header {
+        font-size: 1.1rem;
+        padding: 15px;
+    }
+
+    /* ============================================ */
+    /*                  CONTACTO                    */
+    /* ============================================ */
+
+    .contact-grid {
+        /* Convertimos el grid de 2 columnas a 1 sola */
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .contact-info p {
+        text-align: left; /* Mantenemos el texto alineado a la izquierda para legibilidad */
+    }
+
+    .contact-map iframe {
+        height: 300px; /* Hacemos el mapa un poco más bajo */
+    }
+
+}
